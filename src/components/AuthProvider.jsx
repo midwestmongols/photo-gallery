@@ -41,21 +41,8 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
-    if (!CLIENT_ID) {
-        return (
-            <AuthContext.Provider value={{
-                user: { loggedIn: true, isDemo: true, name: 'Demo User' },
-                accessToken: 'DEMO_TOKEN',
-                login: () => { },
-                logout: () => setUser(null)
-            }}>
-                {children}
-            </AuthContext.Provider>
-        );
-    }
-
     return (
-        <GoogleOAuthProvider clientId={CLIENT_ID}>
+        <GoogleOAuthProvider clientId={CLIENT_ID || 'dummy-id'}>
             <AuthContext.Provider value={{ user, accessToken, login, logout }}>
                 {children}
             </AuthContext.Provider>
