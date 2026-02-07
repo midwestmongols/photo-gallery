@@ -10,7 +10,7 @@ const Login = () => {
     const googleLogin = useGoogleLogin({
         onSuccess: login,
         onError: () => console.log('Login Failed'),
-        scope: 'https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/spreadsheets',
+        scope: 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.profile',
         flow: 'implicit' // or 'auth-code' if we needed server, but we are client-only so implicit gives access_token
     });
 

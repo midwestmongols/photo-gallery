@@ -26,8 +26,8 @@ graph TD
 
 ### 3.2 Key Components
 *   **Authentication**: Google OAuth 2.0 (Implicit Flow for Client-side).
-    *   Scope: `drive.file` (Access only files created/opened by app) or `drive` (Full access).
-    *   *Note: Current implementation uses `drive.file` and relies on a Shared Folder.*
+    *   Scope: `drive.file` (view/upload to app-specific locations).
+    *   *Note: Uses a Shared Folder ID for community access.*
 *   **Storage**: Google Drive.
     *   Central Shared Folder (owned by Admin).
     *   All media (Images, Videos) stored here.
