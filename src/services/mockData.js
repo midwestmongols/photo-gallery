@@ -1,0 +1,53 @@
+/**
+ * Mock Data for Demo Mode
+ */
+
+export const MOCK_FILES = [
+    {
+        id: 'mock-1',
+        name: 'Community Gathering 2024.jpg',
+        mimeType: 'image/jpeg',
+        thumbnailLink: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80',
+        owners: [{ displayName: 'Admin' }],
+        createdTime: '2024-01-15T10:00:00Z'
+    },
+    {
+        id: 'mock-2',
+        name: 'Summer Festival Video.mp4',
+        mimeType: 'video/mp4',
+        thumbnailLink: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80',
+        owners: [{ displayName: 'Sarah' }],
+        createdTime: '2024-06-20T14:30:00Z'
+    },
+    {
+        id: 'mock-3',
+        name: 'Traditional Yurt Setup.jpg',
+        mimeType: 'image/jpeg',
+        thumbnailLink: 'https://images.unsplash.com/photo-1533052601962-d4b97587825d?w=800&q=80',
+        owners: [{ displayName: 'Bat' }],
+        createdTime: '2024-07-01T09:15:00Z'
+    },
+    {
+        id: 'mock-4',
+        name: 'Winter Celebration.jpg',
+        mimeType: 'image/jpeg',
+        thumbnailLink: 'https://images.unsplash.com/photo-1543051939-2358ea2810be?w=800&q=80',
+        owners: [{ displayName: 'Tuya' }],
+        createdTime: '2024-12-31T23:55:00Z'
+    }
+];
+
+export const MOCK_COMMENTS = [
+    {
+        id: 'c1',
+        content: 'This was such a wonderful day!',
+        author: { displayName: 'Bolor', photoLink: '' },
+        createdTime: '2024-01-16T10:00:00Z'
+    },
+    {
+        id: 'c2',
+        content: 'Great shot!',
+        author: { displayName: 'Ganzorig', photoLink: '' },
+        createdTime: '2024-01-16T11:20:00Z'
+    }
+];
