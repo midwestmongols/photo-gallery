@@ -4,6 +4,8 @@ import { useAuth } from './AuthProvider';
 import { motion } from 'framer-motion';
 import { LogIn } from 'lucide-react';
 
+import logo from '../assets/logo.svg';
+
 const Login = () => {
     const { login } = useAuth();
 
@@ -16,7 +18,7 @@ const Login = () => {
             'https://www.googleapis.com/auth/userinfo.profile',
             'https://www.googleapis.com/auth/spreadsheets'
         ].join(' '),
-        flow: 'implicit' // or 'auth-code' if we needed server, but we are client-only so implicit gives access_token
+        flow: 'implicit'
     });
 
     return (
@@ -27,6 +29,12 @@ const Login = () => {
                 className="glass-panel"
                 style={{ padding: '3rem', maxWidth: '400px', width: '100%', textAlign: 'center' }}
             >
+                <img src={logo} alt="MMH Logo" style={{
+                    width: '120px',
+                    height: '120px',
+                    marginBottom: '1.5rem',
+                    filter: 'drop-shadow(0 0 20px rgba(251, 191, 36, 0.3))'
+                }} />
                 <h1 style={{ marginBottom: '0.5rem', fontSize: '2rem', background: 'linear-gradient(to right, #fff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                     Midwest Mongolian Hub
                 </h1>
@@ -39,15 +47,7 @@ const Login = () => {
                     Sign in with Google
                 </button>
 
-                <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid var(--glass-border)' }}>
-                    <p style={{ fontSize: '0.8rem', opacity: 0.5, marginBottom: '0.5rem' }}>No Google Setup?</p>
-                    <button
-                        onClick={() => login()}
-                        style={{ background: 'transparent', border: 'none', color: 'var(--accent-blue)', textDecoration: 'underline', cursor: 'pointer' }}
-                    >
-                        Enter Demo Mode
-                    </button>
-                </div>
+
             </motion.div>
         </div>
     );

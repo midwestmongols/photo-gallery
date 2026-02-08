@@ -12,11 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(null);
 
     const login = (tokenResponse) => {
-        if (!tokenResponse) {
-            setAccessToken('DEMO_TOKEN');
-            setUser({ loggedIn: true, isDemo: true, name: 'Demo User' });
-            return;
-        }
+        if (!tokenResponse) return;
         setAccessToken(tokenResponse.access_token);
 
         // Fetch user details
@@ -43,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const revokeAccess = () => {
-        if (accessToken && accessToken !== 'DEMO_TOKEN') {
+        if (accessToken) {
             if (window.google?.accounts?.oauth2) {
                 window.google.accounts.oauth2.revoke(accessToken, () => {
                     console.log('Access token revoked');

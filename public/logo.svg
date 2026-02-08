@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32" height="32">
+  <defs>
+    <style>
+      .bg-circle { fill: #2B5C8A; stroke: #C8A165; stroke-width: 15px; }
+      .inner-ring { fill: none; stroke: #C8A165; stroke-width: 4px; }
+      .yurt-roof { fill: #2B5C8A; stroke: #EA8C46; stroke-width: 4px; stroke-linejoin: round; }
+      .yurt-wall { fill: #2B5C8A; stroke: #EA8C46; stroke-width: 4px; }
+      .yurt-door { fill: #EA8C46; stroke: #C8A165; stroke-width: 2px; }
+      .banner { fill: #FBE5B5; stroke: #C8A165; stroke-width: 3px; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3)); }
+      .text-primary { font-family: 'Cinzel', serif; font-weight: 800; fill: #1A3C5A; text-anchor: middle; letter-spacing: 1px; }
+      .text-secondary { font-family: 'Cinzel', serif; font-weight: 600; fill: #1A3C5A; text-anchor: middle; letter-spacing: 2px; }
+      .horse { fill: #C8A165; stroke: #1A3C5A; stroke-width: 2px; }
+    </style>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <circle cx="256" cy="256" r="245" class="bg-circle" />
+  <circle cx="256" cy="256" r="215" class="inner-ring" />
+
+  <!-- Yurt (Ger) Top Section -->
+  <g transform="translate(0, -20)">
+    <!-- Main Roof Structure -->
+    <path d="M156,220 Q256,150 356,220" fill="#2B5C8A" stroke="#EA8C46" stroke-width="6" />
+    <path d="M176,220 L336,220" fill="none" stroke="#EA8C46" stroke-width="2" />
+    
+    <!-- Roof Decoration (Toono) -->
+    <path d="M226,180 Q256,165 286,180" fill="none" stroke="#EA8C46" stroke-width="4" />
+    <circle cx="256" cy="175" r="8" fill="#EA8C46" />
+
+    <!-- Walls -->
+    <rect x="176" y="220" width="160" height="70" rx="5" class="yurt-wall" />
+    
+    <!-- Door -->
+    <rect x="236" y="235" width="40" height="55" class="yurt-door" />
+  </g>
+
+  <!-- Banner/Scroll -->
+  <path d="M140,290 H372 Q392,290 392,310 V380 Q392,400 372,400 H180 L140,400 Q120,400 120,380 V310 Q120,290 140,290 Z" class="banner" />
+  
+  <!-- Scroll Ends (Stylized) -->
+  <path d="M392,310 Q405,310 405,325 Q405,340 392,340" fill="#C8A165" stroke="#1A3C5A" stroke-width="2" />
+  <path d="M392,380 Q405,380 405,395 Q405,410 392,410" fill="#C8A165" stroke="#1A3C5A" stroke-width="2" />
+
+  <!-- Horse (Stylized Left Side) -->
+  <g transform="translate(100, 320) scale(0.8)">
+    <path d="M10,60 Q-10,30 20,10 Q40,0 50,20 Q45,30 40,35 Q60,50 50,80 Q40,100 20,90 Z" class="horse" />
+    <!-- Mane details -->
+    <path d="M20,10 Q30,30 25,50" fill="none" stroke="#1A3C5A" stroke-width="2" />
+  </g>
+
+  <!-- Text -->
+  <text x="276" y="325" font-size="28" class="text-primary">MIDWEST</text>
+  <text x="276" y="355" font-size="22" class="text-secondary">MONGOLIAN</text>
+  <text x="276" y="385" font-size="28" class="text-primary">HUB</text>
+</svg>

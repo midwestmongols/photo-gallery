@@ -17,16 +17,9 @@ export const useDrive = () => {
 
         setLoading(true);
         try {
-            if (accessToken === 'DEMO_TOKEN') {
-                // Simulate API delay
-                await new Promise(resolve => setTimeout(resolve, 800));
-                const { MOCK_FILES } = await import('../services/mockData');
-                setFiles(MOCK_FILES);
-            } else {
-                if (!currentFolderId) return;
-                const data = await listFiles(accessToken, currentFolderId);
-                setFiles(data.files || []);
-            }
+            if (!currentFolderId) return;
+            const data = await listFiles(accessToken, currentFolderId);
+            setFiles(data.files || []);
         } catch (err) {
             console.error(err);
             setError(err.message);
@@ -49,10 +42,7 @@ export const useDrive = () => {
 
     const upload = async (file) => {
         if (!accessToken) return;
-        if (accessToken === 'DEMO_TOKEN') {
-            alert("Upload is simulated in Demo Mode.");
-            return;
-        }
+
         if (!currentFolderId) return;
         try {
             const newFile = await uploadFile(accessToken, currentFolderId, file);

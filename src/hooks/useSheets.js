@@ -18,7 +18,7 @@ export const useSheets = () => {
     // Initialize sheet on load
     useEffect(() => {
         const initSheet = async () => {
-            if (!accessToken || accessToken === 'DEMO_TOKEN') return;
+            if (!accessToken) return;
             if (initializing.current || spreadsheetId) return;
 
             initializing.current = true;

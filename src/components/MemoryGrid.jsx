@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { LogOut, Image as ImageIcon, Video, Folder, ArrowLeft } from 'lucide-react';
 import ProtectedImage from './ProtectedImage';
 
+import logo from '../assets/logo.svg';
+
 const MemoryGrid = () => {
     const { files, loading, error, refreshFiles, openFolder, goBack, canGoBack, currentFolderId } = useDrive();
     const { logout, user, accessToken, revokeAccess } = useAuth();
@@ -35,18 +37,25 @@ const MemoryGrid = () => {
     return (
         <div className="container">
             <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-                <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        {canGoBack && (
-                            <button onClick={goBack} className="glass-btn" style={{ padding: '0.5rem' }}>
-                                <ArrowLeft size={20} />
-                            </button>
-                        )}
-                        <h1 style={{ margin: 0, fontSize: '2rem', background: 'linear-gradient(to right, #38bdf8, #fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                            Memories
-                        </h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                    <img src={logo} alt="MMH Logo" style={{
+                        height: '4rem',
+                        width: '4rem',
+                        filter: 'drop-shadow(0 0 15px rgba(251, 191, 36, 0.2))'
+                    }} />
+                    <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            {canGoBack && (
+                                <button onClick={goBack} className="glass-btn" style={{ padding: '0.5rem' }}>
+                                    <ArrowLeft size={20} />
+                                </button>
+                            )}
+                            <h1 style={{ margin: 0, fontSize: '2rem', background: 'linear-gradient(to right, #38bdf8, #fbbf24)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                                Memories
+                            </h1>
+                        </div>
+                        <p style={{ margin: 0, opacity: 0.6, marginLeft: canGoBack ? '3rem' : 0 }}>Our Community Year in Review</p>
                     </div>
-                    <p style={{ margin: 0, opacity: 0.6, marginLeft: canGoBack ? '3rem' : 0 }}>Our Community Year in Review</p>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <img src="https://ui-avatars.com/api/?name=User&background=random" style={{ width: 40, height: 40, borderRadius: '50%' }} alt="User" />
