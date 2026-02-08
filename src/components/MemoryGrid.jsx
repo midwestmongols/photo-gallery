@@ -9,7 +9,7 @@ import ProtectedImage from './ProtectedImage';
 
 const MemoryGrid = () => {
     const { files, loading, error, refreshFiles, openFolder, goBack, canGoBack, currentFolderId } = useDrive();
-    const { logout, user, accessToken } = useAuth();
+    const { logout, user, accessToken, revokeAccess } = useAuth();
     const [selectedFile, setSelectedFile] = useState(null);
 
     if (loading && files.length === 0) {
@@ -50,7 +50,19 @@ const MemoryGrid = () => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <img src="https://ui-avatars.com/api/?name=User&background=random" style={{ width: 40, height: 40, borderRadius: '50%' }} alt="User" />
-                    <button onClick={logout} className="glass-btn" style={{ padding: '0.5rem' }}>
+
+                    <button
+                        onClick={() => {
+                            if (confirm('Disconnect Google Drive access?')) revokeAccess();
+                        }}
+                        className="glass-btn"
+                        style={{ padding: '0.5rem', color: '#f87171', borderColor: 'rgba(248, 113, 113, 0.3)' }}
+                        title="Disconnect App"
+                    >
+                        <LogOut size={20} style={{ transform: 'rotate(180deg)' }} />
+                    </button>
+
+                    <button onClick={logout} className="glass-btn" style={{ padding: '0.5rem' }} title="Sign Out">
                         <LogOut size={20} />
                     </button>
                 </div>

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider, googleLogout } from '@react-oauth/google';
 
 const AuthContext = createContext(null);
 
@@ -37,13 +37,30 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = () => {
+        googleLogout();
         setAccessToken(null);
         setUser(null);
     };
 
+    const revokeAccess = () => {
+        if (accessToken && accessToken !== 'DEMO_TOKEN') {
+            if (window.google?.accounts?.oauth2) {
+                window.google.accounts.oauth2.revoke(accessToken, () => {
+                    console.log('Access token revoked');
+                    logout();
+                });
+            } else {
+                // Fallback if API not ready
+                logout();
+            }
+        } else {
+            logout();
+        }
+    };
+
     return (
         <GoogleOAuthProvider clientId={CLIENT_ID || 'dummy-id'}>
-            <AuthContext.Provider value={{ user, accessToken, login, logout }}>
+            <AuthContext.Provider value={{ user, accessToken, login, logout, revokeAccess }}>
                 {children}
             </AuthContext.Provider>
         </GoogleOAuthProvider>
