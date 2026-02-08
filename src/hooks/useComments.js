@@ -12,10 +12,7 @@ export const useComments = (fileId) => {
         if (!accessToken) return;
         setLoading(true);
         try {
-            if (accessToken === 'DEMO_TOKEN') {
-                const { MOCK_COMMENTS } = await import('../services/mockData');
-                setComments(MOCK_COMMENTS);
-            } else if (isReady) {
+            if (isReady && accessToken !== 'DEMO_TOKEN') {
                 const allComments = await getCommentsFromSheet();
                 // Filter for current file
                 const fileComments = allComments.filter(c => c.fileId === fileId);
@@ -30,16 +27,6 @@ export const useComments = (fileId) => {
 
     const postComment = async (content) => {
         if (!accessToken) return;
-        if (accessToken === 'DEMO_TOKEN') {
-            setComments(prev => [...prev, {
-                id: 'temp-' + Date.now(),
-                content,
-                author: { displayName: 'You (Demo)', photoLink: '' },
-                createdTime: new Date().toISOString()
-            }]);
-            return;
-        }
-
         if (!isReady) {
             console.warn("Sheets not ready yet");
             return;
@@ -55,7 +42,7 @@ export const useComments = (fileId) => {
     };
 
     useEffect(() => {
-        if (accessToken && fileId && (isReady || accessToken === 'DEMO_TOKEN')) {
+        if (accessToken && fileId && isReady) {
             loadComments();
         }
     }, [accessToken, fileId, isReady, loadComments]);
